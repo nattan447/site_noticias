@@ -8,9 +8,14 @@ function Addcadastroview() {
   formulario.action = "home.php";
   const inputnome = document.createElement("input");
   inputnome.type = "text";
-  inputnome.name = "email_cadastro";
+  inputnome.name = "nome_cadastro";
   inputnome.placeholder = "digite o nome de usuário";
   inputnome.required = true;
+  const inputemail = document.createElement("input");
+  inputemail.type = "text";
+  inputemail.name = "email_cadastro";
+  inputemail.placeholder = "digite o email de usuário";
+  inputemail.required = true;
   const inputsenha = document.createElement("input");
   inputsenha.type = "password";
   inputsenha.name = "senha_cadastro";
@@ -23,16 +28,12 @@ function Addcadastroview() {
   jatemconta.textContent = "ja possui uma conta?";
   formulario.appendChild(titulo);
   formulario.appendChild(inputnome);
+  formulario.appendChild(inputemail);
   formulario.appendChild(inputsenha);
   formulario.appendChild(btn);
   formulario.appendChild(jatemconta);
   meuformulario.appendChild(formulario);
   document.body.appendChild(meuformulario);
-  //   meuformulario.addEventListener("submit", () => {
-  //     alert("deu submit");
-  //     meuformulario.remove();
-  //   });
-
   jatemconta.addEventListener("click", () => {
     if (meuformulario) {
       meuformulario.remove();
@@ -40,6 +41,7 @@ function Addcadastroview() {
     }
   });
 }
+
 function Addloginview() {
   const meuformulario = document.createElement("div");
   meuformulario.id = "meu_formulario";
@@ -47,20 +49,28 @@ function Addloginview() {
   const titulo = document.createElement("h1");
   titulo.textContent = "Login";
   formulario.method = "POST";
+  formulario.action = "home.php";
   const inputnome = document.createElement("input");
   inputnome.type = "text";
-  inputnome.name = "email_login";
-  inputnome.placeholder = "digite o email de usuario";
+  inputnome.name = "nome_login";
+  inputnome.placeholder = "digite o nome de usuário";
+  inputnome.required = true;
+  const inputemail = document.createElement("input");
+  inputemail.type = "text";
+  inputemail.name = "email_login";
+  inputemail.placeholder = "digite o email de usuario";
   const inputsenha = document.createElement("input");
   inputsenha.type = "password";
   inputsenha.name = "senha_login";
   inputsenha.placeholder = "digite a sua senha";
   const btn = document.createElement("button");
   btn.textContent = "Logar";
+  btn.type = "submit";
   const semconta = document.createElement("p");
   semconta.textContent = "cadastre-se?";
   formulario.appendChild(titulo);
   formulario.appendChild(inputnome);
+  formulario.appendChild(inputemail);
   formulario.appendChild(inputsenha);
   formulario.appendChild(btn);
   formulario.appendChild(semconta);
