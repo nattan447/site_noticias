@@ -49,7 +49,7 @@ function Addloginview() {
   const titulo = document.createElement("h1");
   titulo.textContent = "Login";
   formulario.method = "POST";
-  formulario.action = "home.php";
+  formulario.action = "homeafterlgn.php";
   const inputnome = document.createElement("input");
   inputnome.type = "text";
   inputnome.name = "nome_login";

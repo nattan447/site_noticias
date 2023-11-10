@@ -27,6 +27,13 @@ O adolescente de 16 anos, que passou o fim de semana com o pai em Santo André, 
 </body>
 </html>
 
+
+
+
+
+
+
+
 <?php
 
 function cadastrar($email,$senha,$nome){
@@ -42,7 +49,9 @@ $verificausers=mysqli_query($con,"SELECT * FROM leitor WHERE email='$email' and 
 if(mysqli_num_rows($verificausers)<=0 && mysqli_num_rows($temid)<=0){
         $colocardados=mysqli_query($con,"INSERT INTO leitor (nome,email,senha,id_leitor) VALUES ('$nome','$email','$senha',$id_aleatorio)");
         if($colocardados){
-            echo("Cadastro realizado com sucesso");
+            session_start();
+            $_SESSION['nome_usuario']=$nome;
+            header("Location:homeafterlgn.php");
      }
     }
     else {
@@ -72,7 +81,10 @@ if(mysqli_num_rows($conta)>0){
 $row=$resultado->fetch_assoc();
 if($row){
     $nomeuser=$row['nome'];
-    echo ("login efetuado com sucesso".$nomeuser);
+    session_start();
+    $_SESSION['nome_usuario']=$nome;
+header("Location:homeafterlgn.php");
+    // echo ("login efetuado com sucesso".$nomeuser);
 }
 
     
@@ -97,6 +109,7 @@ if(isset($_POST["email_login"]) && isset($_POST["senha_login"]) &&  isset($_POST
 }
 
 ?>
+
 
 
 
