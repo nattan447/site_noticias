@@ -51,7 +51,7 @@ if(mysqli_num_rows($verificausers)<=0 && mysqli_num_rows($temid)<=0){
         if($colocardados){
             session_start();
             $_SESSION['nome_usuario']=$nome;
-            header("Location:homeafterlgn.php");
+            header("Location:testando.php");
      }
     }
     else {
@@ -61,6 +61,7 @@ if(mysqli_num_rows($verificausers)<=0 && mysqli_num_rows($temid)<=0){
 
   mysqli_close($con);
 };
+
 function login($email,$senha,$nome){
 $host  = "localhost:3306";
 $user  = "root";
@@ -83,8 +84,8 @@ if($row){
     $nomeuser=$row['nome'];
     session_start();
     $_SESSION['nome_usuario']=$nome;
-header("Location:homeafterlgn.php");
-    // echo ("login efetuado com sucesso".$nomeuser);
+    header("Location:testando.php");
+        // echo ("login efetuado com sucesso".$nomeuser);
 }
 
     
