@@ -26,6 +26,7 @@
 <p>O pai do sexo que matou uma aluna e feriu duas em uma escola pública na zona leste de São Paulo na última segunda-feira (23) diz ter acordado com uma ligação logo após o crime.
 O adolescente de 16 anos, que passou o fim de semana com o pai em Santo André, disse que aproveitou o momento em que ele saiu para trabalhar como entregador de app na noite de sábado para vasculhar a casa e encontrar a arma usada no crime, escondida no baú da cama… - Veja mais em https://noticias.uol.com.br/cotidiano/ultimas-noticias/2023/10/26/entrevista-pai-atirador-ataque-escola-sp.htm?cmpid=copiaecola
 </p>
+<p>tenta ver</p>
    </main>
 </body>
 </html>

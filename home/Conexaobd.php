@@ -15,7 +15,6 @@ $this->conectar();
 echo ("deu bom amigão");
 
     }
-
     private function conectar()
     {
         try 
@@ -28,7 +27,6 @@ echo ("deu bom amigão");
         }
 
     }
-
 
     public function consultar($sql)
     {   try {
