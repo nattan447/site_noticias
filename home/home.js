@@ -49,7 +49,7 @@ function Addloginview() {
   const titulo = document.createElement("h1");
   titulo.textContent = "Login";
   formulario.method = "POST";
-  formulario.action = "homeafterlgn.php";
+  formulario.action = "home.php";
   const inputnome = document.createElement("input");
   inputnome.type = "text";
   inputnome.name = "nome_login";
@@ -85,5 +85,6 @@ function Addloginview() {
 }
 
 setTimeout(() => {
+
   Addcadastroview();
 }, 1000);
