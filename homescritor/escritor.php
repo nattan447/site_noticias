@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" type="text/css" href="home.css" >
-
+    <title>home escritor</title>
+    <link rel="stylesheet" type="text/css" href="../eutenticacao//home.css" >
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
 <h3>Home</h3>
 <h3>economia</h3>
 <h3>política</h3>
+<h3><a href="escrever.php">escrever</a></h3>
 <div>
 <img src="../imgs//user.png" width="60px" />
 <h3><?php  
@@ -29,5 +30,3 @@ O adolescente de 16 anos, que passou o fim de semana com o pai em Santo André, 
 <p>tenta ver</p>
    </main>
 </body>
-</html>
-

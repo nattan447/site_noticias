@@ -37,22 +37,10 @@ O adolescente de 16 anos, que passou o fim de semana com o pai em Santo André, 
 <?php
 
 require "Conexaobd.php";
-class Usuario {
-public $nome;
-public $email;
-public $senha;
-public $id;
-public function contruir($nome, $email, $senha,$id) {
-    $this->nome = $nome;
-    $this->email = $email;
-    $this->senha = $senha;
-    $this->id=$id;
-}
-}
+require "User.php";
 
-class Autenticacao {
-
-
+class Autenticacao 
+{
 public function cadastrar ()
 {
 $host  = "localhost:3306";
@@ -62,7 +50,7 @@ $base  = "fakenews";
 $conecao = new Conexaobd();
 $conecao->constructbase($host,$user,$pass,$base);
 $id_aleatorio=rand(1,1000);
-$usuario=new Usuario();
+$usuario=new Leitor();
 $usuario->contruir($_POST["nome_cadastro"],$_POST["email_cadastro"] ,$_POST["senha_cadastro"],$id_aleatorio);
 $temdados=$conecao->consultar("SELECT * FROM leitor");
 $temid=$conecao->consultar("SELECT * FROM leitor where id_leitor=$id_aleatorio");
@@ -74,7 +62,7 @@ if(mysqli_num_rows($verificausers)<=0 && mysqli_num_rows($temid)<=0)
         {
             session_start();
             $_SESSION['nome_usuario']=$usuario->nome;
-            header("Location:homeafterlgn.php");
+            header("Location:../homeleitor/leitor.php");
         }
 }
     else 
@@ -97,45 +85,66 @@ public function logar()
     $conecao->constructbase($host,$user,$pass,$base);
 
 
- $usuariologin=new Usuario();
- $usuariologin->contruir($_POST["nome_login"],$_POST["email_login"],$_POST["senha_login"],0);  
+//autenticacao
+
+$usuariologin=new Leitor();
+$usuariologin->contruir($_POST["nome_login"],$_POST["email_login"],$_POST["senha_login"],0);  
+$escritor=($conecao->consultar("SELECT * FROM escritor where nome='$usuariologin->nome' and email='$usuariologin->email' and senha='$usuariologin->senha'"));
 $adm=($conecao->consultar("SELECT * FROM adm where nome='$usuariologin->nome' and email='$usuariologin->email' and senha='$usuariologin->senha'"));
-// $conta=($conecao->consultar("SELECT * FROM leitor where nome='$usuariologin->nome' and email='$usuariologin->email' and senha='$usuariologin->senha'"));
-$qurery="SELECT * FROM leitor where nome='$usuariologin->nome' and email='$usuariologin->email' and senha='$usuariologin->senha'";
-$resultado = $conecao->consultar($qurery);
-
-
-if(mysqli_num_rows($adm)>0){
-
-    header("Location:homeafterlgn.php");
-
-}else echo "dados errados";
-
-
-
-if(mysqli_num_rows($resultado)>0)
+$leitor=($conecao->consultar("SELECT * FROM leitor where nome='$usuariologin->nome' and email='$usuariologin->email' and senha='$usuariologin->senha'"));
+ 
+if(mysqli_num_rows($escritor)>0)
 {
-    if($resultado)
+
+
+    if($escritor)
     {
-$row=$resultado->fetch_assoc();
+    $row=$escritor->fetch_assoc();
 if($row)
 {
+    session_start();
+    $iduser=$row['id_escritor'];  
+    $_SESSION['id_escritor']=$iduser;
+    header("Location:../homescritor/escritor.php");
+}
 
-    $nomeuser=$row['nome'];
-    echo($nomeuser);
-    // session_start();
-    // $_SESSION['nome_usuario']=$usuariologin->nome;
-    header("Location:homeafterlgn.php");
+    
+    }
+
+
+
+
+
+
+
+
+
+}
+if(mysqli_num_rows($adm)>0)
+{
+
+ header("Location:homeafterlgn.php");
+
+}
+
+if(mysqli_num_rows($leitor)>0)
+{
+    if($leitor)
+    {
+$row=$leitor->fetch_assoc();
+if($row)
+{
+session_start();
+$iduser=$row['id_leitor'];  
+$_SESSION['id_Usuario']=$iduser;
+header("Location:leitor.php");
 }
 
     
     }
    
 } 
-else 
-{
-    echo ("dados errados");
-}
+
 
 
 }
